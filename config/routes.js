@@ -8,9 +8,8 @@ module.exports = function(app){
   //add user data
   app.post('/createUser', template.createUser);
 
-
   //get user/trips page
-  app.get('/trips', template.tripPage);
+  app.get('/trips/:id', template.tripPage);
 
   //post trip form
   app.post('/trips/create', template.createTrip);

@@ -10,6 +10,7 @@ module.exports = {
 //get user/trips page
 tripPage: (req, res) => {
   knex('users')
+  .where('id', req.params.id)
   .then((results)=>{
     res.render('trips', {user:results[0]})
   })
@@ -20,10 +21,9 @@ tripPage: (req, res) => {
    knex('trips')
    .insert({
      name: req.body.name,
-
    })
    .then(()=>{
-     res.redirect('/trips')
+     res.redirect(`/trips/${req.params.id}`)
    })
  },
 
@@ -36,7 +36,7 @@ tripPage: (req, res) => {
    pw: req.body.pw,
 
  }).then(()=>{
-   res.redirect("/")
+   res.redirect(`/trips/${req.params.id}`)
  })
 },
 
