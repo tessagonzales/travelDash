@@ -53,10 +53,10 @@ tripPage: (req, res) => {
         res.redirect(`/trips`)
      })
  })
-<<<<<<< HEAD
-=======
+
 },
 
+//post airline form
  addAirline: function(req, res){
    knex("airline")
    .insert({
@@ -65,18 +65,18 @@ tripPage: (req, res) => {
    }).then(()=>{
      res.redirect('/airline/new')
    })
->>>>>>> 3ad5de453e26be862003273ebffe4439583fe98e
 },
 
+  //get new airline form
    airlineNew: function(req, res){
      knex("airline")
 
      .then(()=>{
        res.render('airlineNew')
      })
-
 },
 
+ //form asking which airline they belong to
   login: function(req, res){
     knex('airline')
       .then((data)=>{
@@ -84,5 +84,31 @@ tripPage: (req, res) => {
       })
 
   },
+
+  //get all airlines
+  getAirlines: (req, res) => {
+    knex('airline')
+    .then((data)=>{
+      res.render('all_airlines', {airlines:data[0]})
+    })
+  },
+
+  //create flights post
+  createFlight: (req, res) =>{
+    knex('flight')
+    .insert({
+      start: req.body.start,
+      destination: req.body.destination,
+      airline_id: HELLLLPP 
+    }, '*')
+    .then((data)=>{
+      //req.session.user = data[0];
+
+      req.session.save(()=>{
+         res.redirect(`/airline`)
+      })
+
+    })
+  }
 
 } //end of module exports

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+   <h1>All upcoming flights for <%= airlines.name %> </h1>
+
+
+<h4>Create a New Flight</h4>
+   <form action="/airline" method="post">
+     <input type="text" name="start" placeholder="Boarding Location">
+     <input type="text" name="destination" placeholder="Destination">
+     <button type="submit">Create Flight</button>
+   </form>
+  </body>
+</html>
