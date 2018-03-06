@@ -6,7 +6,6 @@ module.exports = {
   index: function(req, res) {
     if(!req.session.user){
       req.session.user = {};
-      console.log('asdgafb')
     }
     req.session.save(()=>{
     res.render("index");
@@ -38,6 +37,7 @@ tripPage: (req, res) => {
    pw: req.body.pw,
  }, '*').then((data)=> {
      req.session.user = data[0];
+     console.log(req.session.user.id)
      req.session.save(()=>{
         res.redirect(`/trips`)
      })
