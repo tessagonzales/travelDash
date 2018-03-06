@@ -53,7 +53,36 @@ tripPage: (req, res) => {
         res.redirect(`/trips`)
      })
  })
+<<<<<<< HEAD
+=======
 },
 
+ addAirline: function(req, res){
+   knex("airline")
+   .insert({
+     name: req.body.name,
+     description: req.body.description,
+   }).then(()=>{
+     res.redirect('/airline/new')
+   })
+>>>>>>> 3ad5de453e26be862003273ebffe4439583fe98e
+},
+
+   airlineNew: function(req, res){
+     knex("airline")
+
+     .then(()=>{
+       res.render('airlineNew')
+     })
+
+},
+
+  login: function(req, res){
+    knex('airline')
+      .then((data)=>{
+        res.render('airlineLogin', {airline:data})
+      })
+
+  },
 
 } //end of module exports
