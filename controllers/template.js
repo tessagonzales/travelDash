@@ -27,6 +27,18 @@ tripPage: (req, res) => {
    })
  },
 
+ //create user
+ createUser: function(req, res){
+ knex("users")
+ .insert({
+   name: req.body.name,
+   email: req.body.email,
+   pw: req.body.pw,
+
+ }).then(()=>{
+   res.redirect("/")
+ })
+},
 
 
 } //end of module exports

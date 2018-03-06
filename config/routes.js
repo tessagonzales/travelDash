@@ -5,6 +5,10 @@ module.exports = function(app){
   //get page to enter user
   app.get('/', template.index);
 
+  //add user data
+  app.post('/createUser', template.createUser);
+
+
   //get user/trips page
   app.get('/trips', template.tripPage);
 
