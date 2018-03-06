@@ -4,8 +4,9 @@ module.exports = {
 
   //get page to enter user
   index: function(req, res) {
-    if(!req.session.id){
-      req.session.id = [];
+    if(!req.session.user){
+      req.session.user = {};
+      console.log('asdgafb')
     }
     req.session.save(()=>{
     res.render("index");
@@ -14,11 +15,7 @@ module.exports = {
 
 //get user/trips page
 tripPage: (req, res) => {
-  knex('users')
-  .where('id', req.session.id)
-  .then((results)=>{
-    res.render('trips', {user:results[0]})
-  })
+    res.render('trips', {user:req.session.user})
 },
 
 //post trip form
@@ -39,13 +36,11 @@ tripPage: (req, res) => {
    name: req.body.name,
    email: req.body.email,
    pw: req.body.pw,
- }).then(()=> {
-   req.session.id.push(req.body.id);
-
-
-
- }).then(()=>{
-   res.redirect(`/trips/${req.session.id}`)
+ }, '*').then((data)=> {
+     req.session.user = data[0];
+     req.session.save(()=>{
+        res.redirect(`/trips`)
+     })
  })
 
 },

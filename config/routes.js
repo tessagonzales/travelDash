@@ -9,7 +9,7 @@ module.exports = function(app){
   app.post('/createUser', template.createUser);
 
   //get user/trips page
-  app.get('/trips/:id', template.tripPage);
+  app.get('/trips', template.tripPage);
 
   //post trip form
   app.post('/trips/create', template.createTrip);
