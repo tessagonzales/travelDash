@@ -4,13 +4,18 @@ module.exports = {
 
   //get page to enter user
   index: function(req, res) {
+    if(!req.session.id){
+      req.session.id = [];
+    }
+    req.session.save(()=>{
     res.render("index");
+  })
   },
 
 //get user/trips page
 tripPage: (req, res) => {
   knex('users')
-  .where('id', req.params.id)
+  .where('id', req.session.id)
   .then((results)=>{
     res.render('trips', {user:results[0]})
   })
@@ -34,10 +39,15 @@ tripPage: (req, res) => {
    name: req.body.name,
    email: req.body.email,
    pw: req.body.pw,
+ }).then(()=> {
+   req.session.id.push(req.body.id);
+
+
 
  }).then(()=>{
-   res.redirect(`/trips/${req.params.id}`)
+   res.redirect(`/trips/${req.session.id}`)
  })
+
 },
 
 
