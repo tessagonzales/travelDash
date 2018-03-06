@@ -11,16 +11,14 @@ exports.up = function(knex, Promise) {
 .createTable("airline",(table)=>{
   table.increments();
   table.string("name");
-  table.string('email');
-  table.string('pw')
+  table.string('description');
   table.timestamps(true, true);
 })
 
 .createTable("flight",(table)=>{
   table.increments();
-  table.string("name");
-  table.string('email');
-  table.string('pw')
+  table.string("start");
+  table.string('destination');
   table.integer('airline_id')
     .references("id")
     .inTable("airline")
@@ -31,9 +29,8 @@ exports.up = function(knex, Promise) {
 
 .createTable("trips",(table)=>{
     table.increments();
-    table.string("name");
-    table.string('email');
-    table.string('pw')
+    table.string("title");
+    table.string('description');
     table.integer('user_id')
     .references("id")
     .inTable("users")

@@ -12,28 +12,31 @@ module.exports = {
   })
   },
 
-//get user/trips page
+//get user/trips and flight dropdown
 tripPage: (req, res) => {
     knex('trips')
-    .then((data)=>{
-      res.render('trips', {user:req.session.user, trip:data})
-    })
+    .then((trips)=>{
+      knex('flight')
+      .then((data)=>{
+        res.render('trips', {user:req.session.user, trip:trips, flight:data})
+      })
+
+  })
 },
 
 //post trip form
  createTrip: (req, res)=>{
    knex('trips')
    .insert({
-     name: req.body.name,
-     email: req.body.email,
-     pw: req.body.pw,
-     user_id: req.session.user
+     title: req.body.title,
+     description: req.body.description,
+     flight_id: req.body.flight_id,
+     user_id: req.session.user.id
    }, '*')
    .then(()=>{
      res.redirect(`/trips`)
    })
  },
-
 
 
  //create user
@@ -45,12 +48,11 @@ tripPage: (req, res) => {
    pw: req.body.pw,
  }, '*').then((data)=> {
      req.session.user = data[0];
-     console.log(req.session.user.id)
+     //console.log(req.session.user.id)
      req.session.save(()=>{
         res.redirect(`/trips`)
      })
  })
-
 },
 
 

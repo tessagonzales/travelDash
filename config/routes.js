@@ -8,11 +8,10 @@ module.exports = function(app){
   //add user data
   app.post('/createUser', template.createUser);
 
-  //get user/trips page
+  //get user/trips page and flight dropdown
   app.get('/trips', template.tripPage);
 
   //post trip form
   app.post('/trips/create', template.createTrip);
-
 
 }
