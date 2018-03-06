@@ -6,7 +6,6 @@ module.exports = {
   index: function(req, res) {
     if(!req.session.user){
       req.session.user = {};
-      console.log('asdgafb')
     }
     req.session.save(()=>{
     res.render("index");
@@ -15,7 +14,10 @@ module.exports = {
 
 //get user/trips page
 tripPage: (req, res) => {
-    res.render('trips', {user:req.session.user})
+    knex('trips')
+    .then((data)=>{
+      res.render('trips', {user:req.session.user, trip:data})
+    })
 },
 
 //post trip form
@@ -23,11 +25,16 @@ tripPage: (req, res) => {
    knex('trips')
    .insert({
      name: req.body.name,
-   })
+     email: req.body.email,
+     pw: req.body.pw,
+     user_id: req.session.user
+   }, '*')
    .then(()=>{
-     res.redirect(`/trips/${req.params.id}`)
+     res.redirect(`/trips`)
    })
  },
+
+
 
  //create user
  createUser: function(req, res){
