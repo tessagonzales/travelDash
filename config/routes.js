@@ -4,4 +4,6 @@ module.exports = function(app){
 
   app.get('/', template.index);
 
+  //add user route
+  app.post('/createUser', template.createUser);
 }
