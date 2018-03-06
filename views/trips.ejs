@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome, <%= user.name %></h1>
+
+<h4>Add a new trip</h4>
+    <form action="/trips/create" method="post">
+      <input type="text" name="name" placeholder="Name">
+      <input type="text" name="email" placeholder="Email">
+      <input type="text" name="pw" placeholder="Password">
+      <select name="flight_id">
+        <option value="default">Select Existing Flights</option>
+        <option value=""></option>
+      </select>
+      <button type="submit">Add Trip!</button>
+
+    </form>
+  </body>
+</html>
