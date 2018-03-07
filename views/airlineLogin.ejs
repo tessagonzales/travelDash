@@ -6,10 +6,16 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
     <link rel="stylesheet" href="../style.css">
   </head>
-  <body>
-    <div class="">
+  <body class="login">
+    <div class="container-fluid">
+    <div class="row">
+  <nav class="navbar nav-login navbar-inverse col-md-12">
+      <h1 class="title-thing">WELCOME! Please choose your Airline</h1>
+    </nav>
+  </div>
+    <div class="row">
 
-      <select name="airline_id">
+      <select class="col-md-2 offset-md-3 airline-selector" name="airline_id">
         <% for (let i = 0; i < airline.length; i++){ %>
           <option value="<%= airline[i].id %>"><%= airline[i].name%></option>
 
@@ -17,6 +23,6 @@
       </select>
 
     </div>
-
+  </div>
   </body>
 </html>
