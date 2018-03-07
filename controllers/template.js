@@ -56,25 +56,34 @@ tripPage: (req, res) => {
 
 },
 
-//post airline form
+//create airline form
  addAirline: function(req, res){
    knex("airline")
    .insert({
      name: req.body.name,
      description: req.body.description,
-   }).then(()=>{
-     res.redirect('/airline/new')
+   }, '*').then((data)=>{
+     req.session.airline = data[0]
+     //console.log(req.session.airline)
+     req.session.save(()=>{
+        res.redirect('/airline/new')
+     })
+
    })
 
 },
 
   //get new airline form
    airlineNew: function(req, res){
-     knex("airline")
-
+     if(!req.session.airline){
+       req.session.airline = {};
+     }
+     knex('airline')
      .then(()=>{
-       res.render('airlineNew')
+       req.session.save(()=>{
+       res.render("airlineNew");
      })
+   })
 },
 
  //form asking which airline they belong to
@@ -90,7 +99,7 @@ tripPage: (req, res) => {
   getAirlines: (req, res) => {
     knex('airline')
     .then((data)=>{
-      res.render('all_airlines', {airlines:data[0]})
+      res.render('all_airlines', {airline:req.session.airline})
     })
   },
 
@@ -100,7 +109,7 @@ tripPage: (req, res) => {
     .insert({
       start: req.body.start,
       destination: req.body.destination,
-      airline_id: HELLLLPP
+      airline_id: req.session.airline.id
     }, '*')
     .then((data)=>{
       //req.session.user = data[0];
@@ -109,6 +118,18 @@ tripPage: (req, res) => {
          res.redirect(`/airline`)
       })
 
+    })
+  },
+
+  //choose airline
+  chooseAirline: (req, res) => {
+    knex('airline')
+    .insert({
+      name: req.session.airline.name
+    }).then(()=>{
+      req.session.save(()=>{
+        res.redirect(`/airline`)
+      })
     })
   }
 

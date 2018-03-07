@@ -17,16 +17,19 @@ module.exports = function(app){
   //get new airline form
   app.get('/airline/new', template.airlineNew);
 
-  //post airline form
+  //create airline form
   app.post('/airline/new', template.addAirline);
 
   //form asking which airline they belong to
   app.get('/airline/login', template.login);
 
+  //Choose airline
+  app.post('/airline/login', template.chooseAirline)
+
   //get all airlines
   app.get('/airline', template.getAirlines);
 
 // create flight
-  app.post('/airline', template.createFlight); 
+  app.post('/airline', template.createFlight);
 
 }

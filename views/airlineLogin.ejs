@@ -14,15 +14,19 @@
     </nav>
   </div>
     <div class="row">
-
+ <form action="/airline" method="post">
       <select class="col-md-2 offset-md-3 airline-selector" name="airline_id">
+        <option value="default">Select Airlines</option>
         <% for (let i = 0; i < airline.length; i++){ %>
           <option value="<%= airline[i].id %>"><%= airline[i].name%></option>
 
         <% } %>
       </select>
+      </div>
+    <button type="submit" >Submit</button>
+  </form>
 
-    </div>
+
   </div>
   </body>
 </html>
