@@ -3,11 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
   </head>
-  <body>
-    <h1>Welcome, <%= user.name %></h1>
+  <body class="trips">
+    <div class="container-fluid">
+      <div class="row">
+    <nav class="navbar nav-trips navbar-inverse">
+        <h1 class="title-thing">Welcome, <%= user.name %>!</h1>
+      </nav>
+    </div>
 
-    <p>your trips</p>
+    <div class="row">
+    <h1 class="col-md-8 nav-trips offset-md-1">Your Trips</h1>
+  </div>
     <% for(let i=0;i<trip.length;i++){ %>
       <p><%= trip[i].title %></p>
       <p><%= trip[i].description %></p>
@@ -15,8 +24,8 @@
        <p><%= flight[i].destination %></p>
       <% } %>
       <% } %>
-
-<h4>Add a new trip</h4>
+    </div>
+<h3 class="nav-trips">Add a new trip</h3>
     <form action="/trips/create" method="post">
       <input type="text" name="title" placeholder="Where To?">
       <input type="text" name="description" placeholder="About Trip">
@@ -26,8 +35,9 @@
                <option value="<%= flight[i].id %>"><%= flight[i].destination %></option>
                <% } %>
       </select>
-      <button type="submit">Add Trip!</button>
+      <button class="btn btn-primary" type="submit">Add Trip!</button>
 
     </form>
+  </div>
   </body>
 </html>

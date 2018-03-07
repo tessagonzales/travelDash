@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
    <h1>All upcoming flights for <%= airlines.name %> </h1>
@@ -12,7 +14,7 @@
    <form action="/airline" method="post">
      <input type="text" name="start" placeholder="Boarding Location">
      <input type="text" name="destination" placeholder="Destination">
-     <button type="submit">Create Flight</button>
+     <button class="btn btn-primary" type="submit">Create Flight</button>
    </form>
   </body>
 </html>
