@@ -84,14 +84,12 @@ tripPage: (req, res) => {
   login: function(req, res){
     knex('airline')
       .then((data)=>{
-        req.session.airline = data
-        console.log('req.body:', req.body.id)
-        console.log('req.session:', req.session.airline)
-        req.session.save(()=>{
+
+        console.log('data:', data)
         res.render('airlineLogin', {airline:data})
-      })
     })
   },
+
 
   //get all airlines
   getAirlines: (req, res) => {
@@ -121,13 +119,17 @@ tripPage: (req, res) => {
 
   //choose airline
   chooseAirline: (req, res) => {
+    console.log(req.body)
     knex('airline')
-    .insert({
-      name: req.session.airline.name
-    }).then(()=>{
-      req.session.save(()=>{
-        res.redirect(`/airline`)
-      })
+      .where('id',req.body.airline_id)
+      .then((data)=>{
+
+        req.session.airline = data[0]
+        console.log('data:', data)
+        console.log('req.session:', req.session.airline)
+        req.session.save(()=>{
+          res.redirect('/airline')
+        })
     })
   }
 
