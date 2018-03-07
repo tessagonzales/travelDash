@@ -3,21 +3,45 @@
   <head>
     <meta charset="utf-8">
     <title>New Airline</title>
-    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:400,700" rel="stylesheet">
   </head>
-  <body class="airline-new">
-    <div class="container-fluid">
-    <div class="row">
-      <nav class="navbar nav-airline-new navbar-inverse">
-      <h1 class="title-thing">CREATE YOUR AIRLINE!</h1>
-    </nav>
-    </div>
+
+  <header>
+    <img src='https://img.clipartxtras.com/96ccb22a321d67298548384af976e974_airplane-clipart-black-clipartsgramcom-mini-airplane-clipart_1052-744.svg' height="100px" width="100px"><b>GoGoFlights</b>
+  </header>
+
+  <div class='container-fluid'>
+        <div class="row justify-content-center">
+
+  <div class='col-md-6'>
+  <div class="row">
+      <h1><b>Create Airline</b></h1>
+    </div><BR>
+
+    <div class='row'>
     <form class="" action="/airline/new" method="post">
-      <input type="text" name="name" placeholder="Name">
-      <input type="text" name="description" placeholder="Description">
+      <div class='row'><BR>
+      <input type="text" name="name" placeholder="Airline Name">
+    </div><BR>
+      <div class='row'>
+      <textarea class='textarea' name="description" placeholder="About"></textarea>
+    </div><BR>
+    <div class='row'>
       <button class="btn btn-primary" type="submit" name="button">Submit</button>
+</div>
     </form>
   </div>
+  </div>
+
+  <div class='col-md-6'>
+  <div class='background'></div>
+  </div>
+
+
+  </div>
+  </div>
+
   </body>
 </html>

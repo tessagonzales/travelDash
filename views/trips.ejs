@@ -3,41 +3,63 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:400,700" rel="stylesheet">
+
   </head>
-  <body class="trips">
-    <div class="container-fluid">
-      <div class="row">
-    <nav class="navbar nav-trips navbar-inverse">
-        <h1 class="title-thing">Welcome, <%= user.name %>!</h1>
-      </nav>
+
+  <header>
+    <img src='https://img.clipartxtras.com/96ccb22a321d67298548384af976e974_airplane-clipart-black-clipartsgramcom-mini-airplane-clipart_1052-744.svg' height="100px" width="100px"><b>GoGoFlights</b>
+  </header>
+
+  <div class='container-fluid'>
+        <div class="row justify-content-center">
+
+
+  <div class='col-md-6'>
+  <div class="row">
+        <h1><b>Welcome, <%= user.name %>!</b></h1>
     </div>
 
-    <div class="row">
-    <h1 class="col-md-8 nav-trips offset-md-1">Your Trips</h1>
-  </div>
-    <% for(let i=0;i<trip.length;i++){ %>
-      <p><%= trip[i].title %></p>
-      <p><%= trip[i].description %></p>
-      <% for(let i=0;i < flight.length;i++){ %>
-       <p><%= flight[i].destination %></p>
+
+    <h3>Your Trips:</h3>
+      <% for(let i=0;i<trip.length;i++){ %>
+      <p><%= trip[i].title %> - <%= trip[i].description %><BR>
+
+      Depart:
+      <b><%= trip[i].start %></b>
+      & arrive at
+      <b><%= trip[i].destination %></b>
+      
+    </p>
       <% } %>
-      <% } %>
-    </div>
-<h3 class="nav-trips">Add a new trip</h3>
+
+
+
+
+
+<BR><BR>
+<h4><b>Add a new trip</b></h4>
     <form action="/trips/create" method="post">
-      <input type="text" name="title" placeholder="Where To?">
+      <input type="text" name="title" placeholder="Name of Trip">
       <input type="text" name="description" placeholder="About Trip">
       <select name="flight_id">
                <option value="default">Select Existing Flight</option>
                  <% for(let i=0;i < flight.length;i++){ %>
-               <option value="<%= flight[i].id %>"><%= flight[i].destination %></option>
+               <option value="<%= flight[i].id %>"><%= flight[i].start %> - <%= flight[i].destination %></option>
                <% } %>
       </select>
       <button class="btn btn-primary" type="submit">Add Trip!</button>
-
     </form>
+</div>
+
+    <div class='col-md-6'>
+      <div class='background'></div>
+    </div>
+
+
   </div>
+</div>
   </body>
 </html>

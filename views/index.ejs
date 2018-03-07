@@ -3,27 +3,40 @@
   <head>
     <meta charset="utf-8">
     <title>New User</title>
-    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
-    <link href=“https://fonts.googleapis.com/css?family=Rokkitt:400,700” rel=“stylesheet”>
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:400,700" rel="stylesheet">
 
   </head>
-  <body class="index">
-    <div class="container-fluid">
-      <div class="row">
-    <nav class="navbar nav-index navbar-inverse">
-        <h1 class="title-thing">WELCOME TO THE AIR!</h1>
-      </nav>
-    </div>
 
-    <div class="row">
+  <header>
+    <img src='https://img.clipartxtras.com/96ccb22a321d67298548384af976e974_airplane-clipart-black-clipartsgramcom-mini-airplane-clipart_1052-744.svg' height="100px" width="100px"><b>GoGoFlights</b>
+  </header>
+
+<div class='container-fluid'>
+      <div class="row justify-content-center">
+
+<div class='col-md-6'>
+<div class="row">
+        <h1><b>Plan Your Next Flight With Us!</b></h1>
+          </div>
+
+<div class='row'>
     <form action="/createUser" method="post">
       <input type="text" name="name" placeholder="New User">
       <input type="text" name="email" placeholder="Enter Your Email">
-      <input type="text" name="pw" placeholder="Pick a Password">
+      <input type="password" name="pw" placeholder="Pick a Password">
       <button class="btn btn-primary" type="submit">Submit</button>
     </form>
   </div>
-  </div>
+</div>
+
+<div class='col-md-6'>
+  <div class='background'></div>
+</div>
+
+
+</div>
+</div>
   </body>
 </html>

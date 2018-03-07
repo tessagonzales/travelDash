@@ -1,38 +1,39 @@
+* {
+  font-family: 'Rokkitt', serif;
+}
 
-.index {
-   background-image: url("http://www.videocopilot.net/blog/wp-content/uploads/2013/06/Airplane_down_HD.jpg");
-   background-color: #cccccc;
-   font-family: ‘Rokkitt’, cursive;
-}
-.nav-index {
-  color:white;
-}
-.nav-login {
-  background-color: #000000;
-  color: white;
-}
-.trips {
-  background-image: url("https://localtvwdaf.files.wordpress.com/2017/10/kcinewterminal_gateloungeview.jpg?quality=85&strip=all&w=1500");
-  background-repeat: no-repeat;
+.background {
+  background-image: url('http://www.montalegre-do-cercal.info/Kinderseite/Malvorlagen/Flugzeuge/Flugzeug8.jpg');
   background-size: 100%;
-}
-.nav-trips {
-  color: white;
-}
-.login {
-  background-image: url("http://img.cdn2.vietnamnet.vn/Images/english/2016/05/30/17/20160530170640-aircraft.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-position: top;
+  height: 1000px;
 }
-.airline-selector {
-  font-size: 30px;
+
+header {
+  margin-left: 630px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
-.airline-new {
-  background-image: url("http://www.montalegre-do-cercal.info/Kinderseite/Malvorlagen/Flugzeuge/Flugzeug8.jpg");
-  background-repeat: no-repeat;
-  background-position: center top;
+
+.row {
+  margin-left: 40px;
 }
-.nav-airline-new {
-  background-color: #000000;
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+
+.welcome {
+  margin-left: 200px;
+}
+
+.dropdown{
+  width: 500px;
+}
+
+.textarea {
+  width: 300px;
+  height: 100px;
+}
+
+.border{
+  border: 1px solid black;
+  padding: 5px;
 }

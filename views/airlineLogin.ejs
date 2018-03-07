@@ -3,30 +3,46 @@
   <head>
     <meta charset="utf-8">
     <title>Login</title>
-    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:400,700" rel="stylesheet">
   </head>
-  <body class="login">
-    <div class="container-fluid">
-    <div class="row">
-  <nav class="navbar nav-login navbar-inverse col-md-12">
-      <h1 class="title-thing">WELCOME! Please choose your Airline</h1>
-    </nav>
+
+  <header>
+    <img src='https://img.clipartxtras.com/96ccb22a321d67298548384af976e974_airplane-clipart-black-clipartsgramcom-mini-airplane-clipart_1052-744.svg' height="100px" width="100px"><b>GoGoFlights</b>
+  </header>
+
+<div class='container-fluid'>
+      <div class="row justify-content-center">
+
+<div class='col-md-6'>
+<div class="row">
+      <h1 class='welcome'><b>Welcome!</b></h1>
+    </div><BR>
+    <div class='row'>
+      <h2>Choose your Airline</h2>
   </div>
+
     <div class="row">
  <form action="/airline/login" method="post">
-      <select class="col-md-2 offset-md-3 airline-selector" name="airline_id">
+      <select class='dropdown' name="airline_id">
         <option value="default">Select Airlines</option>
         <% for (let i = 0; i < airline.length; i++){ %>
           <option value="<%= airline[i].id %>"><%= airline[i].name%></option>
 
         <% } %>
       </select>
-      </div>
-    <button type="submit" >Submit</button>
+    <button class="btn btn-primary" type="submit" >Submit</button>
   </form>
+</div>
+</div>
+
+<div class='col-md-6'>
+<div class='background'></div>
+</div>
 
 
-  </div>
+</div>
+</div>
   </body>
 </html>

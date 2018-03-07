@@ -7,6 +7,9 @@ module.exports = {
     if(!req.session.user){
       req.session.user = {};
     }
+    if(!req.session.airline){
+      req.session.airline = {}
+    }
     req.session.save(()=>{
     res.render("index");
   })
@@ -14,13 +17,14 @@ module.exports = {
 
 //get user/trips and flight dropdown
 tripPage: (req, res) => {
-    knex('trips')
-    .then((trips)=>{
-      knex('flight')
-      .then((data)=>{
-        res.render('trips', {user:req.session.user, trip:trips, flight:data})
-      })
-
+  knex('trips').where('trips.user_id', req.session.user.id)
+  .innerJoin('flight', 'trips.flight_id', 'flight.id')
+  .then((trips)=>{
+    knex('flight')
+    .then((data)=>{
+      console.log(trips)
+      res.render('trips', {user:req.session.user, trip:trips, flight:data})
+    })
   })
 },
 
@@ -92,7 +96,7 @@ tripPage: (req, res) => {
 
   //get all airlines
   getAirlines: (req, res) => {
-    console.log('session:', req.session.airline)
+    //console.log('session:', req.session.airline)
     knex('airline').where('id', req.session.airline.id)
     .then((data)=>{
       knex('flight').where('airline_id', req.session.airline.id)

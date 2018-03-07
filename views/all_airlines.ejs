@@ -3,27 +3,56 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:400,700" rel="stylesheet">
   </head>
   <body>
+
+    <header>
+      <img src='https://img.clipartxtras.com/96ccb22a321d67298548384af976e974_airplane-clipart-black-clipartsgramcom-mini-airplane-clipart_1052-744.svg' height="100px" width="100px"><b>GoGoFlights</b>
+    </header>
+
+    <div class='container-fluid'>
+          <div class="row justify-content-center">
+
+    <div class='col-md-6'>
+    <div class="row">
     <% for(let i=0; i<airline.length; i++){ %>
+     <h1><b>All upcoming flights for <%= airline[0].name %></b></h1>
+     "<%= airline[0].description %>"
+    <% } %>
+  </div><BR>
 
-     <h1>All upcoming flights for <%= airline[0].name %> </h1>
-    <% } %><BR><BR>
-
-    <h3>Ok here ya flights so far:</h3>
+<div class='row'>
+  <div class='border'>
     <% for(let i=0; i<flight.length; i++) { %>
     <p>DEPART: <%= flight[i].start %><BR>
     ARRIVAL: <%= flight[i].destination %></p>
-      <% } %><BR><BR><BR>
+      <% } %>
+    </div>
+    </div><BR><BR><BR>
 
-
+<div class='row'>
 <h4>Create a New Flight</h4>
    <form action="/airline" method="post">
-     <input type="text" name="start" placeholder="Boarding Location">
-     <input type="text" name="destination" placeholder="Destination">
+     <input type="text" name="start" placeholder="Depart">
+     <input type="text" name="destination" placeholder="Arrival">
      <button class="btn btn-primary" type="submit">Create Flight</button>
    </form>
+ </div>
+
+</div>
+
+     <div class='col-md-6'>
+       <div class='background'></div>
+     </div>
+
+
+   </div>
+ </div>
+
+
+
   </body>
 </html>
