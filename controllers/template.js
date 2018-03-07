@@ -85,8 +85,8 @@ tripPage: (req, res) => {
     knex('airline')
       .then((data)=>{
         req.session.airline = data
-        console.log('req.body:', req.body.id)
-        console.log('req.session:', req.session.airline)
+        //console.log('req.body:', req.body.id)
+        //console.log('req.session:', req.session.airline)
         req.session.save(()=>{
         res.render('airlineLogin', {airline:data})
       })
@@ -97,7 +97,10 @@ tripPage: (req, res) => {
   getAirlines: (req, res) => {
     knex('airline')
     .then((data)=>{
-      res.render('all_airlines', {airline:req.session.airline})
+      knex('flight')
+      .then((results)=>{
+          res.render('all_airlines', {airline:req.session.airline, flight:results})
+      })
     })
   },
 
