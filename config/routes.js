@@ -14,11 +14,13 @@ module.exports = function(app){
   //post trip form
   app.post('/trips/create', template.createTrip);
 
-
+  //get new airline form
   app.get('/airline/new', template.airlineNew);
 
+  //post airline form
   app.post('/airline/new', template.addAirline);
 
+  //form asking which airline they belong to
   app.get('/airline/login', template.login);
 
 }
