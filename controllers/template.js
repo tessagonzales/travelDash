@@ -62,15 +62,9 @@ tripPage: (req, res) => {
    .insert({
      name: req.body.name,
      description: req.body.description,
-   }, '*').then((data)=>{
-     req.session.airline = data[0]
-     //console.log(req.session.airline)
-     req.session.save(()=>{
+   }, '*').then(()=>{
         res.redirect('/airline/new')
      })
-
-   })
-
 },
 
   //get new airline form
@@ -90,9 +84,13 @@ tripPage: (req, res) => {
   login: function(req, res){
     knex('airline')
       .then((data)=>{
+        req.session.airline = data
+        console.log('req.body:', req.body.id)
+        console.log('req.session:', req.session.airline)
+        req.session.save(()=>{
         res.render('airlineLogin', {airline:data})
       })
-
+    })
   },
 
   //get all airlines
