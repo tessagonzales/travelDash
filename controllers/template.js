@@ -95,7 +95,10 @@ tripPage: (req, res) => {
   getAirlines: (req, res) => {
     knex('airline')
     .then((data)=>{
-      res.render('all_airlines', {airline:req.session.airline})
+      knex('flight')
+      .then((results)=>{
+          res.render('all_airlines', {airline:req.session.airline, flight:results})
+      })
     })
   },
 

@@ -9,7 +9,14 @@
   <body>
     <% for(let i=0; i<airline.length; i++){ %>
      <h1>All upcoming flights for <%= airline[i].name %> </h1>
-    <% } %>
+    <% } %><BR><BR>
+
+    <h3>Ok here ya flights so far:</h3>
+    <% for(let i=0; i<flight.length; i++) { %>
+    <p>DEPART: <%= flight[i].start %><BR>
+    ARRIVAL: <%= flight[i].destination %></p>
+      <% } %><BR><BR><BR>
+
 
 <h4>Create a New Flight</h4>
    <form action="/airline" method="post">
