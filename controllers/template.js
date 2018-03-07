@@ -53,8 +53,7 @@ tripPage: (req, res) => {
         res.redirect(`/trips`)
      })
  })
-<<<<<<< HEAD
-=======
+
 },
 
  addAirline: function(req, res){
@@ -65,7 +64,7 @@ tripPage: (req, res) => {
    }).then(()=>{
      res.redirect('/airline/new')
    })
->>>>>>> 3ad5de453e26be862003273ebffe4439583fe98e
+
 },
 
    airlineNew: function(req, res){
