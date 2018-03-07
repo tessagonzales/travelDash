@@ -23,4 +23,10 @@ module.exports = function(app){
   //form asking which airline they belong to
   app.get('/airline/login', template.login);
 
+  //get all airlines
+  app.get('/airline', template.getAirlines);
+
+// create flight
+  app.post('/airline', template.createFlight); 
+
 }
